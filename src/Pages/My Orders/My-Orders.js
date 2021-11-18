@@ -7,8 +7,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useAuth from '../../Hooks/UseAuth/useAuth';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const MyOrders = (id) => {
+    useEffect( () => {
+        AOS.init();
+      },[])
     const { user } = useAuth();
     const [myOrders, setMyOrders] = useState([])
 
@@ -19,7 +24,7 @@ const MyOrders = (id) => {
             .then(data => setMyOrders(data))
           
 
-    }, [])
+    }, [user.email])
 
     const handleDelete = id => {
         const url = `http://localhost:5000/purchase/${id}`
@@ -41,14 +46,14 @@ const MyOrders = (id) => {
 
     return (
         <div>
-            <h3 className="mb-4">My orders are: {myOrders.length}</h3>
+            <h3 data-aos="zoom-in-up" className="mb-4">My orders are: {myOrders.length}</h3>
             <TableContainer component={Paper}>
-                <Table aria-label="simple table">
+                <Table data-aos="zoom-in-up" aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Product title</TableCell>
-                            <TableCell align="right">User Name</TableCell>
-                            <TableCell align="right">Delete</TableCell>
+                            <TableCell data-aos="zoom-in-up">Product title</TableCell>
+                            <TableCell data-aos="zoom-in-up" align="right">User Name</TableCell>
+                            <TableCell data-aos="zoom-in-up" align="right">Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -57,12 +62,12 @@ const MyOrders = (id) => {
                                 key={order.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
+                                <TableCell data-aos="zoom-in-up" component="th" scope="row">
                                     {order.title}
                                 </TableCell>
                                 
-                                <TableCell align="right">{order.name}</TableCell>
-                                <TableCell align="right"><button onClick={() => handleDelete(order._id)} className="btn btn-danger">Delete</button></TableCell>
+                                <TableCell data-aos="zoom-in-up" align="right">{order.name}</TableCell>
+                                <TableCell data-aos="zoom-in-up" align="right"><button onClick={() => handleDelete(order._id)} className="btn btn-danger">Delete</button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

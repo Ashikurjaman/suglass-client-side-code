@@ -1,28 +1,34 @@
 import { Rating } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import img from "../../../images/player-1.png"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 
 const DisplayReview = ({ review }) => {
+    useEffect( () => {
+        AOS.init();
+      },[])
     const { name, description, rating } = review;
     return (
         <div>
-            <div class="col">
-                <div class="card h-100 p-2">
-                    <div class="card-body">
+            <div className="col">
+                <div data-aos="zoom-in-up" className="card h-100 p-2">
+                    <div data-aos="zoom-in-up" className="card-body">
                     <div>
-                            <img src={img} class="card-img-top" alt="..." />
+                            <img data-aos="zoom-in-up" src={img} className="card-img-top" alt="..." />
                         </div>
                         
                     </div>
                     <div className=" ms-3 ">
-                    <p class="card-text">{description?.slice(0,170)}</p>
+                    <p data-aos="zoom-in-up" className="card-text">{description?.slice(0,170)}</p>
                     <br/>
-                        <div className="ms-3 mt-2">
+                        <div data-aos="zoom-in-up" className="ms-3 mt-2">
                             <h6>{name}</h6>
                             <br/>
                             <div>
-                                <Rating name="read-only" value={rating} readOnly />
+                                <Rating data-aos="zoom-in-up" name="read-only" value={rating} readOnly />
                             </div>
                         </div>
                     </div>
