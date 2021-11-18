@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 const Addproduct = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/products", data).then((res) => {
+    axios.post("https://sheltered-meadow-91214.herokuapp.com/products", data).then((res) => {
       if (res.data.insertedId) {
         alert(" Added successfully");
         reset();

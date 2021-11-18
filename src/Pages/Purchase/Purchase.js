@@ -11,7 +11,7 @@ const Purchase = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${purchaseId}`)
+    fetch(`https://sheltered-meadow-91214.herokuapp.com/products/${purchaseId}`)
       .then((res) => res.json())
       .then((data) => setSingleProduct(data));
   }, [purchaseId]);
@@ -19,7 +19,7 @@ const Purchase = () => {
   const { register, handleSubmit, reset } = useForm();
   const history = useHistory();
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/purchase", data).then((res) => {
+    axios.post("https://sheltered-meadow-91214.herokuapp.com/purchase", data).then((res) => {
       if (res.data.insertedId) {
         alert("Congrats!! Order successfully confirmed");
         reset();

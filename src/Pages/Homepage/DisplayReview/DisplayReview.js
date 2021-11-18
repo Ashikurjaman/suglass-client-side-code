@@ -1,6 +1,5 @@
 import { Rating } from '@mui/material';
 import React, { useEffect } from 'react';
-import img from "../../../images/player-1.png"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -17,7 +16,7 @@ const DisplayReview = ({ review }) => {
                 <div data-aos="zoom-in-up" className="card h-100 p-2">
                     <div data-aos="zoom-in-up" className="card-body">
                     <div>
-                            <img data-aos="zoom-in-up" src={img} className="card-img-top" alt="..." />
+                            <img data-aos="zoom-in-up" src="https://i.ibb.co/NS5Bw8J/player-1.png" className="card-img-top" alt="..." />
                         </div>
                         
                     </div>

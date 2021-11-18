@@ -7,7 +7,7 @@ const Review = () => {
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/addreviews", data).then((res) => {
+    axios.post("https://sheltered-meadow-91214.herokuapp.com/addreviews", data).then((res) => {
       if (res.data.insertedId) {
         alert("Rating added successfully. Thanks for your feedback!");
         reset();

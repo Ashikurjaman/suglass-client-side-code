@@ -7,7 +7,7 @@ const DisplayReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/addreviews')
+        fetch('https://sheltered-meadow-91214.herokuapp.com/addreviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     })
