@@ -14,45 +14,34 @@ import Navbar from "./Component/Shared/Navbar/Navbar";
 import Login from "./Component/Login/Login";
 import Register from "./Component/Register/Register";
 import Dashboard from "./Pages/DashBoard/Dashboard";
-import Review from "./Pages/Review/Review";
-import Payment from "./Pages/Payment/Payment";
-import MyOrders from "./Pages/My Orders/My-Orders";
-import MakeAAdmin from "./Pages/Admin/Make.A.Admin/MakeAAdmin";
-import ManageAllProducts from "./Pages/Admin/Manage.all.products/ManageAllProducts";
+
 import Notfound from "./Pages/NotFound/Notfound";
+import AuthProvider from "./Context/AuthProvider/AuthProvider";
+import PrivateRoute from "./Component/PrivateRoute/PrivateRoute";
+import Purchase from "./Pages/Purchase/Purchase";
+import DisplayReviews from "./Pages/Homepage/DisplayReviews/DisplayReviews";
 
 function App() {
   return (
     <div className="App">
-      <Router>
+     <AuthProvider>
+     <Router>
         <Navbar></Navbar>
       <Switch>
           <Route path="/about">
             <About></About>
           </Route>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
-          </Route>
-          <Route path="/makeAdmin">
-            <MakeAAdmin></MakeAAdmin>
-          </Route>
-          <Route path="/manageproducts">
-            <ManageAllProducts></ManageAllProducts>
-          </Route>
-          <Route path="/myorder">
-            <MyOrders></MyOrders>
-          </Route>
-          <Route path="/review">
-            <Review></Review>
-          </Route>
-          <Route path="/payment">
-            <Payment></Payment>
-          </Route>
+          </PrivateRoute>
           <Route path="/home">
             <Home />
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/displayreviews">
+            <DisplayReviews />
           </Route>
           <Route path="/shop">
             <Shop/>
@@ -63,6 +52,9 @@ function App() {
           <Route path="/register">
             <Register/>
           </Route>
+          <PrivateRoute path="/purchase/:purchaseId">
+            <Purchase/>
+          </PrivateRoute>
           <Route exact path="/">
             <Home />
           </Route>
@@ -73,6 +65,7 @@ function App() {
         </Switch>
         <Footer></Footer>
       </Router>
+     </AuthProvider>
       
     </div>
   );

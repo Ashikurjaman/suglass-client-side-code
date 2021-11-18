@@ -1,7 +1,11 @@
+import { Button } from '@mui/material';
+import { Box } from '@mui/system';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../../Hooks/UseAuth/useAuth';
 
 const Navbar = () => {
+  const {user,logout} = useAuth();
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,8 +49,16 @@ const Navbar = () => {
         
       </ul>
       <div class="d-flex">
-        
-        <button style={{  backgroundColor:"#39395f" , color:"#fff" }} class="btn " >Login</button>
+        {
+          user?.email ? 
+          <Box>
+            <Link to="/dashboard"><button  style={{  backgroundColor:"#39395f" , color:"#fff", marginRight:"10px" }} class="btn " >DashBoard</button></Link>
+          <Link to="/login"><button onClick={logout} style={{  backgroundColor:"#39395f" , color:"#fff" }} class="btn " >Logout</button></Link>
+          </Box>
+:
+<Link to="/login"><button style={{  backgroundColor:"#39395f" , color:"#fff" }} class="btn " >Login</button></Link>
+
+        }
       </div>
     </div>
   </div>
